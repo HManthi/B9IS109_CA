@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/Login.css'
+import '../css/AddStudent.css'
 
 const AddStudent = () => {
   return (
@@ -22,7 +22,7 @@ const AddStudent = () => {
                 <label htmlFor='password'>Password:</label>
                 <input type='text' id='grade' name='grade' />
             </div>
-            <button type='submit'>Register</button>
+            <button className='btn-register' type='submit'>Register</button>
         </form>
         
     </div>
