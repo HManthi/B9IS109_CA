@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
-    role: {type: String},
+    roll: {type: String},
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     grade: {type: String}

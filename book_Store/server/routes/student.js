@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
     try {
         const {username, password, roll, grade} = req.body;
-        const student  = Student.findOne({username})
+        const student  = await Student.findOne({username})
 
         if(student){
             return res.json({message: "Student is registered"})

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../css/AddStudent.css'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const AddStudent = () => {
     const [roll, setRoll] = useState('')
@@ -8,10 +9,15 @@ const AddStudent = () => {
     const [grade, setGrade] = useState('')
     const [password, setPassword] = useState('')
 
+    const navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3001/student/register', {roll, username, password, grade})
-        .then(res => { console.log(res)
+        .then(res => { 
+            if(res.data.registered){
+                navigate('/dashboard')
+            }
         })
         .catch(err => console.log(err))
       }
@@ -39,7 +45,7 @@ const AddStudent = () => {
                 <input type='password' id='password' name='password' 
                 onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <button className='btn-register' type='submit'>Register</button>
+            <button className='btn-register' type='submit' onClick={handleSubmit}>Register</button>
         </form>
         
     </div>
