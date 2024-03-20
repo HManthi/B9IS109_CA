@@ -15,8 +15,13 @@ const Login = () => {
     axios.post('http://localhost:3001/auth/login', {username, password, role})
     .then(res => {
       if(res.data.login && res.data.role === 'admin'){
+        setRole('admin')
         navigate('/dashboard')
+      }else if(res.data.login && res.data.role === 'student'){
+        setRole('student')
+        navigate('/')
       }
+      console.log(res)
     })
     .catch(err => console.log(err))
   }
