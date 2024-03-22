@@ -22,7 +22,8 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({username: admin.username, role: 'admin'},process.env.Admin_Key)
         // store the token inside the cookies
-        res.cookie('token', token,{httpOnly: true, secure: true})
+        // res.cookie('token', token,{httpOnly: true, secure: true})
+        res.cookie('token', token,{ secure: true})
         return res.json({login: true, role: 'admin'})
     }else if(role == 'student'){
         const student = await Student.findOne({username})
@@ -37,7 +38,8 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({username: student.username, role: 'student'},process.env.Student_Key)
         // store the token inside the cookies
-        res.cookie('token', token,{httpOnly: true, secure: true})
+        // res.cookie('token', token,{httpOnly: true, secure: true})
+        res.cookie('token', token,{ secure: true})
         return res.json({login: true, role: 'student'})
     }
     } catch (er) {
@@ -50,7 +52,7 @@ const verifyAdmin = (req, res, next) => {
     const token = req.cookies.token;
     console.log(token)
     if(!token){
-        return res.json({message: "Invalid user login"})
+        return res.json({message: "Invalid admin login"})
     }else{
         jwt.verify(token, process.env.Admin_Key, (err, decoded) => {
             if(err){
@@ -64,5 +66,42 @@ const verifyAdmin = (req, res, next) => {
         })
     }
 }
+
+const verifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    console.log(token)
+    if(!token){
+        return res.json({message: "Invalid user login"})
+    }else{
+        jwt.verify(token, process.env.Admin_Key, (err, decoded) => {
+            if(err){
+                jwt.verify(token, process.env.Student_Key, (err, decoded) => {
+                    if(err){
+                        return res.json({messsage: "Invalid Token"})
+                    }else{
+                        req.username = decoded.username;
+                        req.role = decoded.role;
+                        next()
+        
+                    }
+                })
+            }else{
+                req.username = decoded.username;
+                req.role = decoded.role;
+                next()
+
+            }
+        })
+    }
+}
+
+router.get('/verify',verifyUser, (req, res) => {
+    return res.json({login : true, role : req.role})
+    window.location.reload()
+})
+router.get('/logout', (req, res) => {
+    res.clearCookie('token')
+    return res.json({logout : true ,role : req.role})
+})
 
 export {router as AdminRouter, verifyAdmin}

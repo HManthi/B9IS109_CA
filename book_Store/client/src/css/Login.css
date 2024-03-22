@@ -6,7 +6,8 @@
     justify-content: center;
     align-items: center;
     height: 90vh;
-    background-color: #301934;
+    /* background-color: #301934; */
+    background-color: #a7a1a8;
 }
 
 .login-container{
