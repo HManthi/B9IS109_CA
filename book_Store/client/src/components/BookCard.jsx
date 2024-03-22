@@ -12,7 +12,7 @@ const BookCard = ({book}) => {
         </div>
         <div className="book-actions">
             <button><Link to={`/book/${book._id}`} className='btn-link'>Edit</Link></button>
-            <button>Delete</button>
+            <button><Link to={`/delete/${book._id}`} className='btn-link'>Delete</Link></button>
         </div>
     </div>
   )
