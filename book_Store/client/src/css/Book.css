@@ -48,3 +48,7 @@
     }
 }
 
+.book-card .btn-link{
+    text-decoration: none;
+    color: white;
+}
