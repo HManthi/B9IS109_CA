@@ -23,7 +23,7 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({username: admin.username, role: 'admin'},process.env.Admin_Key)
         // store the token inside the cookies
         // res.cookie('token', token,{httpOnly: true, secure: true})
-        res.cookie('token', token,{ secure: true})
+        res.cookie('token', token,{httpOnly: true, secure: true})
         return res.json({login: true, role: 'admin'})
     }else if(role == 'student'){
         const student = await Student.findOne({username})
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({username: student.username, role: 'student'},process.env.Student_Key)
         // store the token inside the cookies
         // res.cookie('token', token,{httpOnly: true, secure: true})
-        res.cookie('token', token,{ secure: true})
+        res.cookie('token', token,{httpOnly: true, secure: true})
         return res.json({login: true, role: 'student'})
     }
     } catch (er) {

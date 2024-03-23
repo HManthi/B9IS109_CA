@@ -11,6 +11,7 @@ import axios from 'axios';
 import AddBook from './components/AddBook';
 import EditBook from './components/EditBook';
 import DeleteBook from './components/DeleteBook';
+
 function App() {
   const [role, setRole] = useState('')
 
@@ -32,7 +33,7 @@ function App() {
       <Navbar role = {role}/>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/books' element={<Books />}></Route>
+        <Route path='/books' element={<Books role={role}/>}></Route>
         <Route path='/login' element={<Login setRoleVar = {setRole}/>}></Route>
         <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/addstudent' element={<AddStudent />}></Route>

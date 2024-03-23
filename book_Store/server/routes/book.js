@@ -41,7 +41,7 @@ router.get('/book/:id', async(req, res) => {
     }
 })
 
-router.put('/book/:id', async(req, res) => {
+router.put('/book/:id',verifyAdmin, async(req, res) => {
     
     try {
         const id = req.params.id;
