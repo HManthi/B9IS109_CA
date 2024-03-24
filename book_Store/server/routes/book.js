@@ -52,7 +52,7 @@ router.put('/book/:id',verifyAdmin, async(req, res) => {
     }
 })
 
-router.delete('/book/:id', async(req, res) => {
+router.delete('/book/:id',verifyAdmin,async(req, res) => {
     try {
         const id = req.params.id;
         const book = await Book.findByIdAndDelete({_id: id})
