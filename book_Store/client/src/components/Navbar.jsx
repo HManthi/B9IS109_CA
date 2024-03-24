@@ -10,7 +10,7 @@ const Navbar = ({role}) => {
         <div className='navbar-left'>
             <Link to="/" className='navbar-brand'>Reader's Haven</Link>
         </div>
-        {/* <div className='navbar-right'>
+        <div className='navbar-right'>
             <Link to="/books" className='navbar-link'>Books</Link>
             {role === "admin" && <>
               <Link to="/addbook" className='navbar-link'>Add Book</Link>
@@ -23,9 +23,9 @@ const Navbar = ({role}) => {
               : <Link to="/logout" className='navbar-link'>Logout</Link>
             }          
             
-        </div> */}
+        </div>
 
-        <div className='navbar-right'>
+        {/* <div className='navbar-right'>
           
             <Link to="/books" className='navbar-link'>Books</Link>            
               <Link to="/addbook" className='navbar-link'>Add Book</Link>
@@ -38,7 +38,7 @@ const Navbar = ({role}) => {
                 )}
               
             
-        </div>
+        </div> */}
     </nav>
   )
 }

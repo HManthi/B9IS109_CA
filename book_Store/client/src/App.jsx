@@ -20,7 +20,7 @@ function App() {
     axios.get('http://localhost:3001/auth/verify')
     .then(res => {
       if(res.data.login){
-        setRoll(res.data.role)
+        setRole(res.data.role)
       }else{
         setRole('')
       }

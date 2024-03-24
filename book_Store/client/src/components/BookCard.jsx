@@ -10,16 +10,16 @@ const BookCard = ({book, role}) => {
             <h3>{name}</h3>
             <p>{author}</p>
         </div>
-        <div className="book-actions">
+        {/* <div className="book-actions">
               <button><Link to={`/book/${book._id}`} className='btn-link'>Edit</Link></button>
               <button><Link to={`/delete/${book._id}`} className='btn-link'>Delete</Link></button>
-            </div>
-        {/* {role === "" &&
+            </div> */}
+        {role === "admin" &&
             <div className="book-actions">
               <button><Link to={`/book/${book._id}`} className='btn-link'>Edit</Link></button>
               <button><Link to={`/delete/${book._id}`} className='btn-link'>Delete</Link></button>
             </div>
-        } */}
+        }
         
     </div>
   )
