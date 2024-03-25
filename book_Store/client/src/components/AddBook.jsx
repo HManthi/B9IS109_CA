@@ -12,7 +12,7 @@ const AddBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/book/add', {name, author, imageUrl})
+        axios.post('https://git.heroku.com/readersheaven.git/book/add', {name, author, imageUrl})
         .then(res => { 
                 if(res.data.added){
                     navigate('/books')

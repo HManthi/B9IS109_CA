@@ -13,7 +13,7 @@ const AddStudent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/student/register', {roll, username, password, grade})
+        axios.post('https://git.heroku.com/readersheaven.git/student/register', {roll, username, password, grade})
         .then(res => { 
             if(res.data.registered){
                 navigate('/dashboard')

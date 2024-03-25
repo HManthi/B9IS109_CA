@@ -34,6 +34,10 @@ app.get('/dashboard', async(req, res) => {
   }
 })
 
+app.get('/', (req, res) => {
+  return res.json("Server Start")
+})
+
 app.listen(process.env.PORT, () => {
     console.log('server is running');
 })
